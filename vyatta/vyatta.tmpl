@@ -3,19 +3,15 @@ set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 preempt 'false'
 set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 priority '254'
 set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 sync-group 'vgroup1'
 
-# for each subnet in vlan create....
-
-set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '10.38.161.129/26'
-set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '10.94.179.192/26'
-set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '10.221.251.1/25'
+%{for subnet in subnets ~}
+set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '${subnet.gateway}/${subnet.cidr}'
+%{ endfor ~}
 
 set interfaces bonding dp0bond0 vif ${vlan} address '192.168.12.1/30'
 set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 preempt 'false'
-set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 priority '254'
+set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 priority '253'
 set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 sync-group 'vgroup1'
 
-# for each subnet in vlan create....
-
-set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '10.38.161.129/26'
-set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '10.94.179.192/26'
-set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '10.221.251.1/25'
+%{for subnet in subnets ~}
+set interfaces bonding dp0bond0 vif ${vlan} vrrp vrrp-group 1 virtual-address '${subnet.gateway}/${subnet.cidr}'
+%{ endfor ~}

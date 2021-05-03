@@ -15,5 +15,8 @@ variable "iaas_classic_api_key" {
 
 variable "vlans" {
   type = list(any)
+}
 
+variable "vlan_name" {
+  type = string
 }
