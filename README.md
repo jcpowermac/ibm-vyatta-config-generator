@@ -1,0 +1,1 @@
+# ibm-vyatta-config-generator
