@@ -1,5 +1,5 @@
-variable "vlans" {
-  type = list(any)
+variable "vrrp_vlan_configs" {
+  type = map(any)
 }
 
 variable "vlan_name" {

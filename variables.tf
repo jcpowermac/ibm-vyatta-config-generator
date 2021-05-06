@@ -17,6 +17,21 @@ variable "vlans" {
   type = list(any)
 }
 
+
+variable "vlan_prefixes" {
+  type = list(any)
+}
+
+variable "vlan_mask" {
+  type    = number
+  default = 30
+}
+
+
+//variable "vlan_ip_addresses" {
+//  type = list(any)
+//}
+
 variable "vlan_name" {
   type = string
 }
